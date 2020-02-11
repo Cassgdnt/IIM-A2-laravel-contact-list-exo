@@ -17,3 +17,15 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/contacts', 'ContactController');
+
+Route::post('/contact', function(){
+    $contact = new App\Contact;
+
+    $contact->name = request('name');
+    $contact->titre =request('email');
+    $contact->text =request('tel');
+
+    $contact->save();
+
+     return 'contact envoyé';
+});
